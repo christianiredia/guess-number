@@ -13,10 +13,15 @@ document.querySelector(".number").textContent = secretNumber;
 
 document.querySelector(".check").addEventListener("click", function () {
   const guess = Number(document.querySelector(".guess").value);
+  //When there is no input
   if (!guess) {
     document.querySelector(".message").textContent = "No number!";
+    //When player wins:
   } else if (guess === secretNumber) {
     document.querySelector(".message").textContent = "CORRECT NUMBER!!";
+    document.querySelector("body").style.backgroundColor = "#60b347";
+    document.querySelector(".number").style.width = "30rem";
+    //When input is greater than the number:
   } else if (guess > secretNumber) {
     if (score > 1) {
       score--;
@@ -26,6 +31,7 @@ document.querySelector(".check").addEventListener("click", function () {
       document.querySelector(".message").textContent = "You Lost The Game. :(";
       document.querySelector(".score").textContent = 0;
     }
+    //When input is less than the number:
   } else if (guess < secretNumber) {
     score--;
     document.querySelector(".score").textContent = score;
