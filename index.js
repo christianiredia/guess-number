@@ -18,9 +18,14 @@ document.querySelector(".check").addEventListener("click", function () {
   } else if (guess === secretNumber) {
     document.querySelector(".message").textContent = "CORRECT NUMBER!!";
   } else if (guess > secretNumber) {
-    score--;
-    document.querySelector(".score").textContent = score;
-    document.querySelector(".message").textContent = "TOO HIGH";
+    if (score > 1) {
+      score--;
+      document.querySelector(".score").textContent = score;
+      document.querySelector(".message").textContent = "TOO HIGH";
+    } else {
+      document.querySelector(".message").textContent = "You Lost The Game. :(";
+      document.querySelector(".score").textContent = 0;
+    }
   } else if (guess < secretNumber) {
     score--;
     document.querySelector(".score").textContent = score;
